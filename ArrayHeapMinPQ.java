@@ -1,7 +1,6 @@
-package bearmaps;
 import java.util.*;
 
-public class ArrayHeapMinPQ<T> implements ExtrinsicMinPQ<T> {
+public class ExtrinsicMinPQ<T> {
     private int size;
     private T[] items;
     private Double[] priorities;
@@ -44,7 +43,6 @@ public class ArrayHeapMinPQ<T> implements ExtrinsicMinPQ<T> {
         hm = new HashMap<>();
     }
 
-    @Override
     public void add(T item, double priority) {
         if (!this.contains(item)) {
             if (size == items.length) {
@@ -64,12 +62,10 @@ public class ArrayHeapMinPQ<T> implements ExtrinsicMinPQ<T> {
         }
     }
 
-    @Override
     public boolean contains(T item) {
         return hm.containsKey(item);
     }
 
-    @Override
     public T getSmallest() {
         if (size() == 0) {
             throw new NoSuchElementException();
@@ -77,7 +73,6 @@ public class ArrayHeapMinPQ<T> implements ExtrinsicMinPQ<T> {
         return items[0];
     }
 
-    @Override
     public T removeSmallest() {
         if (size() == 0) {
             throw new NoSuchElementException();
@@ -104,12 +99,10 @@ public class ArrayHeapMinPQ<T> implements ExtrinsicMinPQ<T> {
         return smallest;
     }
 
-    @Override
     public int size() {
         return size;
     }
 
-    @Override
     public void changePriority(T item, double priority) {
         if (hm.containsKey(item)) {
             Node N = hm.get(item);
@@ -152,7 +145,6 @@ public class ArrayHeapMinPQ<T> implements ExtrinsicMinPQ<T> {
     }
 
     private void swim(int i, double priority) {
-        // @source: lecture 21 slide 22
         if (priorities[parent(i)] > priority) {
             swap(i, parent(i));
             swim(parent(i), priorities[parent(i)]);
@@ -160,7 +152,6 @@ public class ArrayHeapMinPQ<T> implements ExtrinsicMinPQ<T> {
     }
 
     private int parent(int i) {
-        // @source: lecture 21 slide 22
         return (i - 1) / 2;
     }
 
