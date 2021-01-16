@@ -1,2 +1,2 @@
 # data_structures
-Building data structures. Obviously, these aren't new data structures, but all of the code is written without using references.
+Building data structures. Obviously, these aren't new data structures, but this is my attempt at implementing them from scratch.
